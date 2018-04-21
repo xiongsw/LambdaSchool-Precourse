@@ -19,7 +19,7 @@ function incrementByOne(arr) {
   // arr is an array of integers  
   // increase each integer by one
   // return the array
-  for (var i=0; i<arr.length; i++){arr[i]+=1}
+  for (var i=0; i<arr.length; i++){arr[i]+=1;}
   return arr;
 }
 
@@ -42,15 +42,15 @@ function wordsToSentence(words) {
   // return a string that is all of the words concatenated together
   // spaces need to be between each word
   // example: ['Hello', 'world!'] -> 'Hello world!'
-  return words.toString();
+  return words.join(' ');
 }
 
 function contains(arr, item) {
   // check to see if item is inside of arr
   // return true if it is, otherwise return false
-   if(typeof arr==="array"){
+   if(typeof arr=== 'object'){
      for (var i=0; i<arr.length; i++){if(arr[i]===item)return true;}
-   }else if(typeof arr==="obj"){
+   }else if(typeof arr=== 'object'){
      for(var key in arr){
        if(key===item)return true; /*  find a key */
        if(arr[key]===item)return true; /* find a value */
@@ -72,11 +72,12 @@ function addNumbers(numbers) {
 function averageTestScore(testScores) {
   // testScores is an array.  Iterate over testScores and compute the average.
   // return the average
-  var sum=0;
+  let sum=0;
   for(var i=0; i<testScores.length; i++){
     sum+=testScores[i];
   } 
-  var average=sum/testScores.length;
+  const average=sum/testScores.length;
+  return average;
 }
 
 function largestNumber(numbers) {
@@ -84,8 +85,8 @@ function largestNumber(numbers) {
   // return the largest integer
   let CurrentMax=numbers[0];
   for(var i=1; i<numbers.length; i++){
-    if(CurrentMax < numers[i])CurrentMax=numbers[i];
-  };
+    if(CurrentMax < numbers[i])CurrentMax=numbers[i];
+  }
  return CurrentMax;
 }
 
@@ -97,7 +98,7 @@ function multiplyArguments() {
   if(arguments.length <2)return arguments[0];
   let multi=1;
   for(var i=0; i<arguments.length; i++){
-      multi*=arguments[i]
+      multi*=arguments[i];
   }
   return multi;
 }

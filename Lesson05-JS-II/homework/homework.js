@@ -16,7 +16,7 @@ function greeting(language) {
      return 'Guten Tag!';
   }else if(language==='Mandarin'){
      return 'Ni Hao!';
-  }else if(language==='Spanish'){return 'Hola!'
+  }else if(language==='Spanish'){return 'Hola!';
   }else {return 'Hello!';}
 }
 

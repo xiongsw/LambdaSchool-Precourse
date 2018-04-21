@@ -13,57 +13,60 @@ function createUserClass(obj) {
     this.name=obj.name;
     this.email=obj.email;
     this.password=obj.password;
-    this.sayHi=function(){var hello="Hello, my name is ";
+    this.sayHi=function(){var hello='Hello, my name is ';
                          hello+=obj.name;
-      return hello};
+      return hello;};
  }
-obj={};
+let obj={}, str='test from lambdaschool';
 obj.username='James';
 obj.name='James Bond';
 obj.email='email@w3.org';
 obj.password='psd';
 const User =new createUserClass(obj); 
-console.log('new object is created');
-console.log(User.sayHi());
+User.sayHi();
+//console.log('new object is created');
+// console.log(User.sayHi());
 
 
-//function addPrototypeMethod(Constructor) {
+function addPrototypeMethod() {
   // add a method to the constructor's prototype
   // the method should be called 'sayHi' and should return the string 'Hello World!'
- // [Constructor].prototype.sayHi={
-//    function(){return 'Hello World!'}};
-//}
+  this.sayHi={
+    function(){return 'Hello World!';}};
+}
 function Testp() {
   this.test = true;
 }
 Testp.prototype.sayHi=
-function(){return 'Hello World!'};
+function(){return 'Hello World!';};
 //		addPrototypeMethod('Testp');
 var testp = new Testp();
-console.log(testp.sayHi());
+testp.sayHi();
+//console.log(testp.sayHi());
 
 function addReverseString(str) {
   // add a method to the string constructor's prototype that returns a reversed copy of the string
   // name this method reverse
   // hint:
   // you will need to use 'this' inside of reverse
-  this.reverse=function(){
-   var reverseString=str.split("");
+  this.reverse=function(str){
+   var reverseString=str.split('');
     var len=reverseString.length;
-    console.log(len);
+  //  console.log(len);
       for (var i=0; i<len/2; i++){
         var j=reverseString[i];
         reverseString[i]=reverseString[len-i-1];
         reverseString[len-i-1]=j;
     }
-    var reverseString1=reverseString.join("");
+    var reverseString1=reverseString.join('');
     return reverseString1;    
-  }
+  };
   return this;
 }
 
 var strReverse=new addReverseString(str);
-console.log(strReverse.reverse());
+strReverse.reverse();
+//console.log(strReverse.reverse());
 
 // Do not modify code below this line.
 // --------------------------------

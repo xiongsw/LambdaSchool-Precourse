@@ -5,11 +5,10 @@ function makeCat(name, age) {
   // add an age property to the object with the value set to the age argument
   // add a method called meow that returns the string 'Meow!'
   // return the object
-  let Cat={};
-  Cat.name=name;
-  Cat.age=age;
-  Cat.meow=function (){return 'meow'};
-  return Cat;
+  this.name=name;
+  this.age=age;
+  this.meow=function (){return 'Meow!';};
+  return this;
 }
 
 function addProperty(object, property) {
@@ -24,22 +23,20 @@ function invokeMethod(object, method) {
   // method is a string that contains the name of a method on the object
   // invoke this method
   // nothing needs to be returned
-  for(var key in Object.keys(object)){
-      if(key===method)object.key();
-  }
+  object[method]();
 }
 
 function multiplyMysteryNumberByFive(mysteryNumberObject) {
   // mysteryNumberObject has a property called mysteryNumber
   // multiply the mysteryNumber property by 5 and return the product
-  let product=mysteryNumberObject[mysteryNumber]*5;
+  let product=mysteryNumberObject['mysteryNumber']*5;
   return product;
 }
 
 function deleteProperty(object, property) {
   // remove the property from the object
   // return the object
-  delete object.property;
+  delete object[property];
   return object;
 }
 
@@ -56,8 +53,7 @@ function newUser(name, email, password) {
 function hasEmail(user) {
   // return true if the user has a value for the property 'email'
   // otherwise return false
-   for(var key in Object.keys(user)){
-     if(key==='email'||user[key]!==null)return true;}
+ if(user.email) return true;
    return false;
 }
 
@@ -65,24 +61,23 @@ function hasProperty(object, property) {
   // return true if the object has the value of the property argument
   // property is a string
   // otherwise return false
-  var tempString=arguments[1];
-  for(var key in Object.keys(user)){if(user[key]===tempString)return true;}
-  return false; 
+  if(object[property]) return true;
+   return false;
 }
 
 function verifyPassword(user, password) {
   // check to see if the provided password matches the password property on the user object
   // return true if they match
   // otherwise return false
-  for(var key in Object.keys(user)){
-    if(key==='password'||user[key]!==password)return true;}
+  for(var key in user){
+    if(key==='password'&&user[key]===password)return true;}
   return false;
 }
 
 function updatePassword(user, newPassword) {
   // replace the existing password on the user object with the value of newPassword
   // return the object
-  user[password]=newPassword;
+  user['password']=newPassword;
   return user;
 }
 
@@ -92,6 +87,7 @@ function addFriend(user, newFriend) {
   // return the user object
   var friendNumber=user.friends.length;
   user.friends[friendNumber]=newFriend;
+  return user;
 }
 
 function setUsersToPremium(users) {
@@ -112,8 +108,8 @@ function sumUserPostLikes(user) {
   // each post object has an integer property called 'likes'
   // sum together the likes from all the post objects
   // return the sum
-  var sum=0, postsNum=user.posts.length;
-  for(var i=0; i<postNum; i++){
+  let sum=0, postsNum=user.posts.length;
+  for(var i=0; i<postsNum; i++){
     sum+=user.posts[i].likes;
   }
    return sum;
@@ -128,10 +124,12 @@ function addCalculateDiscountPriceMethod(storeItem) {
   // price -> 20
   // discountPercentage -> .2
   // discountPrice = 20 - (20 * .2)
-  var discountPrice=0.;
+
   storeItem.calculateDiscountPrice=function(){
-    storeItem.price*(1.0-storeItem.discountPercentage)}
-}
+    return storeItem.price*(1.0-storeItem.discountPercentage);
+  };
+  return storeItem;
+ }
 
 // Do not modify code below this line.
 // --------------------------------
