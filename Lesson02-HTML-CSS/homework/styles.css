@@ -1,0 +1,19 @@
+/* E. Add a style rule to your h1 element changing the color of the text */
+h1 {color: blueviolet; }
+/*<!-- F. Add a style rule to the img element giving it a width of 400px -->*/
+img {width: 400px;}
+/* G. Add a style rule to 'thirdDiv' changing the height to 600px and the width to 500px.
+           H. Add a style rule to 'thirdDiv' changing the background color. 
+           K. Give the id 'thirdDiv' a padding of 50px.
+           L. Give the id 'thirdDiv' a border, any width color and style you choose.
+         */
+ #thirdDiv { height: 600px; width: 500px; 
+            background: red; 
+            padding: 50px;
+            border: 100px blue solid; 
+            }
+
+/*   I. Change the size of the font for 'spanId' to 18px.
+  J. Give the id 'spanId' a margin of 50px. */
+#spanId {font-size: 18px; 
+         margin: 50px; }
