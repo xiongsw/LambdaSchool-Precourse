@@ -1,72 +1,63 @@
 // Do not change any of the function names
 // Because I can not download using npm test JSV.test.js, 
 // therfore I changed the code and tested seperately at repl.it
-function createUserClass(obj) {
+function createUserClass() {
   // create an ES6 class or a constructor function called User
   // it should accept an options object with username, name, email, and password properties
   // in the constructor set the username, name, email, and password properties
   // the constructor should have a method 'sayHi' on its prototype that returns the string 'Hello, my name is {{name}}'
   // {{name}} should be the name set on each instance
   // return the class
-  //class UserClass{constructor(username,name,email){
-    this.username=obj.username;
-    this.name=obj.name;
-    this.email=obj.email;
-    this.password=obj.password;
-    this.sayHi=function(){var hello='Hello, my name is ';
-                         hello+=obj.name;
-      return hello;};
+  function Usertest(options){
+    this.username=options.username;
+    this.name=options.name;
+    this.email=options.email;
+    this.password=options.password;
+  }
+  Usertest.prototype.sayHi=function(){
+    return 'Hello, my name is'+this.name;
+  };
+  return Usertest;
  }
-let obj={}, str='test from lambdaschool';
-obj.username='James';
-obj.name='James Bond';
-obj.email='email@w3.org';
-obj.password='psd';
-const User =new createUserClass(obj); 
-User.sayHi();
+
+
+//let objtest={}, str='test from lambdaschool';
+//objtest.username='James';
+//objtest.name='James Bond';
+//objtest.email='email@w3.org';
+//objtest.password='psd';
+//const Usertest =new createUserClass(objtest); 
+//Usertest.sayHi();
 //console.log('new object is created');
 // console.log(User.sayHi());
 
 
-function addPrototypeMethod() {
+function addPrototypeMethod(TestTest) {
   // add a method to the constructor's prototype
   // the method should be called 'sayHi' and should return the string 'Hello World!'
-  this.sayHi={
-    function(){return 'Hello World!';}};
+    TestTest.prototype.sayHi=
+          function(){return 'Hello World!';};
+          return TestTest;
 }
-function Testp() {
-  this.test = true;
-}
-Testp.prototype.sayHi=
-function(){return 'Hello World!';};
-//		addPrototypeMethod('Testp');
-var testp = new Testp();
-testp.sayHi();
+
 //console.log(testp.sayHi());
 
-function addReverseString(str) {
+function addReverseString() {
   // add a method to the string constructor's prototype that returns a reversed copy of the string
   // name this method reverse
   // hint:
   // you will need to use 'this' inside of reverse
-  this.reverse=function(str){
-   var reverseString=str.split('');
-    var len=reverseString.length;
-  //  console.log(len);
-      for (var i=0; i<len/2; i++){
-        var j=reverseString[i];
-        reverseString[i]=reverseString[len-i-1];
-        reverseString[len-i-1]=j;
-    }
-    var reverseString1=reverseString.join('');
-    return reverseString1;    
-  };
-  return this;
+ // ***** manipulate text-string (very interesting)
+ String.prototype.reverse = function() {
+   // use 3 steps method, gurus often use Cascading to write it in one line.
+   let strArr= this.split(''); 
+   strArr=strArr.reverse();
+   strArr=strArr.join('');
+  return strArr;  
+   };  
+
 }
 
-var strReverse=new addReverseString(str);
-strReverse.reverse();
-//console.log(strReverse.reverse());
 
 // Do not modify code below this line.
 // --------------------------------

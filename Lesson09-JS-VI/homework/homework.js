@@ -11,32 +11,26 @@ function sumArray(numbers, cb) {
   // sum up all of the integers in the numbers array
   // pass the result to cb
   // no return is necessary
-  cb=0.0;
-  for(var i=0; i<numbers.length; i++){
-     cb+=numbers[i];
-  }
-// or cb=numbers.reduce(function(total,item){return total+item;})
+  let sumNumbers=numbers.reduce(function(sum,item){return sum+item;});
+  cb(sumNumbers);
 //
 }
 
 function forEach(arr, cb) {
   // iterate over arr and pass its values to cb one by one
   // hint: you will be invoking cb multiple times (once for each value in the array)
-  cb=[];
   for(var i=0; i<arr.length; i++){
-      cb[i]=arr[i];
+      cb(arr[i]);
   }
-  return cb;
 }
 
 function map(arr, cb) {
   // create a new array
   // iterate over each value in arr, pass it to cb, then place the value returned from cb into the new arr
   // the new array should be the same length as the array argument
-  const newVar=[];
+  let newVar=[]; 
   for(var i=0; i<arr.length; i++){
-    cb=arr[i];
-    newVar[i]=cb;
+    newVar[i]=cb(arr[i]);
   } 
   return newVar;
 }
