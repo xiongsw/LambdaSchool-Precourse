@@ -53,13 +53,13 @@ ToDo.prototype.completeToDo=function(){this.complete=true;};
 function buildToDo(todo, index) {
   // code here
   var toDoShell=document.createElement("div");
-  toDoShell.className = 'toDoSheell'; 
+  toDoShell.className = 'toDoShell'; 
   var toDoText=document.createElement("span");
    toDoText.innerHTML=todo.description;
    toDoText.id = index;
    if(todo.complete===true){toDoText.class='completeText';}
    toDoShell.appendChild(toDoText); 
-   toDoText.addEventListener('click', completeToDo()); 
+//   toDoText.addEventListener('click', completeToDo()); 
    return toDoShell;
 }
 
@@ -71,7 +71,9 @@ function buildToDo(todo, index) {
 
 function buildToDos(toDos) {
   // code here
-   const toDoArr=toDos.map(buildToDo);
+   let toDoArr=[];
+   for(var i=0; i<toDos.length; i++){
+    toDoArr[i]=buildToDo(toDos[i],i);}
    return toDoArr;
 }
 
@@ -92,7 +94,7 @@ function displayToDos() {
   let toDoContainer=document.getElementById("toDoContainer");
       toDoContainer.innerHTML="";
   let toDoItemsNew= buildToDos(toDoItems);
-  toDoItemsNew.forEach(element => {
+  toDoItemsNew.forEach((element) => {
       toDoContainer.innerHTML+=element;
   });
 
@@ -112,10 +114,13 @@ function displayToDos() {
 
 function addToDo() {
   // code here
-  let newToDoObj=new ToDo(newToDo);
-  toDoItems=newToDoObj;
+  let newToDoElem=document.getElementById("newToDo");
+//  let newToDoValue=newToDoElem.value;    
+  let newToDoObj=new ToDo(newToDoElem), len=toDoItems.length;
+  toDoItems[len]=newToDoObj;
   newToDo="";
   displayToDos();
+  return toDoItems;
 }
 
 /* 
@@ -144,8 +149,10 @@ function completeToDo(event) {
   // UNCOMMENT THE NEXT LINE
    const index = event.target.id;
   // code here
-  toDoItems[index].completeToDo(); 
+ // toDoItems[index].completeToDo(); 
+
   displayToDos(); 
+
 }
 
 /* STEP 10: Make sure ALL tests pass */
